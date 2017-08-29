@@ -13,4 +13,4 @@ export const RouterConfig = [
     data:{ dataParam: 'param from coonfig'}
   },
   { path: '**', component: PageNotFoundComponent }
-]
+];
