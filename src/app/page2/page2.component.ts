@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute} from "@angular/router";
-import {query} from "@angular/core/src/animation/dsl";
+
+
+import {equalValueValidator} from './equal-value.validator';
+import {FormBuilder} from '@angular/forms';
+
 
 @Component({
   moduleId: module.id,
@@ -10,58 +13,25 @@ import {query} from "@angular/core/src/animation/dsl";
 })
 export class Page2Component implements OnInit {
 
-  public params;
-  public data;
-
-  private routerState;
-  private routerData;
-  private routerParams;
-
-  public goHome(){
-    this.router.navigate([ '/'] ).then( function () {
-      console.log('home!!!')
-    })
-  }
+  // public registrationForm = this.fb.group({
+  //     username: [''],
+  //     password: [''],
+  //     confirmPassword: [''],
+  //   },
+  //   {validator: equalValueValidator('password', 'confirmPassword')}  // key is to validate on the form group
+  // );
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,){
+    private fb: FormBuilder) {
   }
 
   ngOnInit() {
 
-    //using snapshot
-    console.log('snapshot')
-
-    console.log(this.route.snapshot.queryParams);
-    console.log(this.route.snapshot.data);
-    console.log(this.route.snapshot.params);
-
-    // console.log(this.route.snapshot.paramMap.get('data'))
-
-    //using subscribe fo rout params
-    this.routerState = this.route.params.subscribe(params => {
-      console.log('params')
-      console.log(params);
-      this.params = params;
-
-    });
-
-    this.routerData = this.route.data.subscribe( data => {
-      console.log('data');
-      console.log(data);
-      this.data = data;
-
-    });
-
-    this.routerParams = this.route.queryParams.subscribe( queryParams => {
-      console.log('queryParams');
-      console.log(queryParams)
-    })
-
-
   }
 
+  // public register() {
+  //   console.log(this)
+  // }
 }
 
 

@@ -1,7 +1,32 @@
 <h1>
   router
 </h1>
- <a [routerLink]="['/p2/2']">Page2 - without parameters</a>
+<a [routerLink]="['/p2/2']">Page2 - without parameters</a>
 <hr/>
 <router-outlet></router-outlet>
 <hr/>
+
+
+<form [formGroup]="form"
+      (ngSubmit)="register()">
+  <div class="form-group">
+    <input formControlName="username"
+           [formGroup]="form"
+           placeholder="Username" autofocus>
+  </div>
+  <div class="form-group">
+    <input formControlName="password"
+           [formGroup]="form"
+           placeholder="Password">
+  </div>
+  <div class="form-group">
+    <input formControlName="confirmPassword"
+           [formGroup]="form"
+           placeholder="Password Confirm">
+  </div>
+  <button class="btn btn-primary"
+          type="submit"
+  ><i class="fa fa-user-plus"></i> Register
+  </button>
+</form>
+{{form.invalid}}

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {equalValueValidator} from './page2/equal-value.validator';
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  public title = 'app works!';
 
-  constructor(){}
+  constructor(
+    public fb: FormBuilder
+  ) { };
 
-  ngOnInit() {
+  public form = this.fb.group({
+      username: '',
+      password: '',
+      confirmPassword: '',
+    }, {validator: equalValueValidator('password', 'confirmPassword')}
+  );
 
+  public register() {
+    console.log(this.form.value)
   }
-
 }
